@@ -1,4 +1,4 @@
-/*(function (global) {
+(function (global) {
 
 // Set up a namespace for our utility
 var ajaxUtils = {};
@@ -28,9 +28,9 @@ ajaxUtils.sendGetRequest =
       function() { 
         handleResponse(request, responseHandler); 
       };
-    request.open("POST", requestUrl, true);
+    request.open("GET", requestUrl, true);
     //request.send("POST", requestUrl, true);
-    request.setRequestHeader('X-CSRF','24');
+   // request.setRequestHeader('X-CSRF','24');
     request.send(); // for POST only
   };
 
@@ -51,11 +51,11 @@ function handleResponse(request,
 global.$ajaxUtils = ajaxUtils;
 
 
-})(window);*/
+})(window);
 
 
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("#usb").click(function(){
         var token = $("meta[name='_csrf']").attr("content")
         $.ajax({url: "http://127.0.0.1:8000/upload/transfer/",
@@ -64,4 +64,4 @@ $(document).ready(function(){
             console.log(request);
         }});
     });
-});
+});*/

@@ -60,7 +60,7 @@
             // Callback to retrieve the list of files from the server response:
             getFilesFromResponse: function (data) {
                 if (data.result && $.isArray(data.result.files)) {
-                    console.log("FIles are added");
+                    console.log("Retrieving the list of the files");
 
                     return data.result.files;
                 }
@@ -80,6 +80,7 @@
                     files = data.files;
                 console.log(files);
                 data.process(function () {
+                	console.log("Files are to be uploaded or canceled");
                     return $this.fileupload('process', data);
                 }).always(function () {
                     data.context = that._renderUpload(files).data('data', data);
@@ -130,6 +131,7 @@
                     files = getFilesFromResponse(data),
                     template,
                     deferred;
+                    console.log("Upload is succesful");
                 if (data.context) {
                     data.context.each(function (index) {
                         var file = files[index] ||

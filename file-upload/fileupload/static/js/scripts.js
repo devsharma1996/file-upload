@@ -1,5 +1,5 @@
 // Event handling
-document.addEventListener("DOMContentLoaded",
+/*document.addEventListener("DOMContentLoaded",
   function (event) {
     
     // Unobtrusive event binding
@@ -21,4 +21,12 @@ document.addEventListener("DOMContentLoaded",
       });
   }
 );
+*/
+
+
+document.querySelector("#usb")
+      .addEventListener("click", function () {
+        
+        window.open("http://127.0.0.1:8000/upload/transfer/");
+        });
 

@@ -35,11 +35,14 @@ class EkFileCreateView(CreateView):
     fields = "__all__"
 
     def form_valid(self, form):
+    	
         self.object = form.save()
+        print self.object
         files = [serialize(self.object)]
         data = {'files': files}
         response = JSONResponse(data, mimetype=response_mimetype(self.request))
         response['Content-Disposition'] = 'inline; filename=files.json'
+        print 'Before you send post request'
         return response
 
     def form_invalid(self, form):
@@ -73,7 +76,7 @@ class EkFileListView(ListView):
         return response
     
 def transfer(request):
-    '''files=[]
+    files=[]
     #Returns list of files that correspond to requirements
     files=attemptMount()
     files_existing=[]
@@ -97,7 +100,7 @@ def transfer(request):
                     fModel.save()
                     unique_files_existing.append(fModel)
     files_existing.append(unique_files_existing)
-    files_existing_names.append(unique_files)'''
+    files_existing_names.append(unique_files)
     if request.method == 'GET':
             unique_files_existing
             total_amount = len(files)
@@ -121,5 +124,7 @@ def transfer(request):
             'btn_check_flag' : 'disabled',
             'download_more' : download_more,
             }
-            return HttpResponse(template.render(context, request))
+            return HttpResponseRedirect('new/')
     return HttpResponse("Please access this URL properly")
+    
+
